@@ -100,8 +100,8 @@ export default function Navbar() {
                     {/* Services Dropdown */}
                     <button
                       className={`text-base font-medium transition-colors flex items-center ${pathname.startsWith("/services")
-                        ? "text-[#E67E22]"
-                        : "text-gray-700 hover:text-[#E67E22]"
+                        ? "text-secondary"
+                        : "text-gray-700 hover:text-secondary"
                         }`}
                     >
                       {item?.name}

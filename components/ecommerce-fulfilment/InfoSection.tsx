@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const InfoSection = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 bg-grid-pattern overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
@@ -22,7 +22,7 @@ const InfoSection = () => {
               {/* Simulated Person/Activity Image */}
               <div className="w-full h-full bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                  <Image
-                 src="/ecommerce-fulfillment/info-image.png"
+                 src="/ecommerce-fulfilment/info-image.png"
                  alt="Ecommerce Fulfillment"
                  fill
                  className="object-cover object-center"
@@ -51,10 +51,10 @@ const InfoSection = () => {
             
             <div className="space-y-6 text-gray-700">
               <p className="text-gray-700 font-semibold tracking-wide text-md md:text-lg leading-relaxed  ">
-                Streamline your fulfillment processes, from picking and packing to shipping and returns, with a leading-edge Warehouse Management System and scalable solutions custom-built for your ecommerce business.
+                Streamline your fulfilment processes, from picking and packing to shipping and returns, with a leading-edge Warehouse Management System and scalable solutions custom-built for your ecommerce business.
               </p>
               <p className="text-gray-700 font-medium tracking-wide text-md md:text-lg leading-relaxed opacity-80">
-                With order fulfillment services and inventory management tailored to your needs, along with robust technology to support your omnichannel operations, it's never been easier to fast-track your growth.
+                With order fulfilment services and inventory management tailored to your needs, along with robust technology to support your omnichannel operations, it's never been easier to fast-track your growth.
               </p>
             </div>
 

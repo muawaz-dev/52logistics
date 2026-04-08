@@ -1,12 +1,13 @@
 'use client';
-
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
 const tabs = [
   { 
-    id: 'fulfillment', 
+    id: 'fulfilment', 
+    image: '/ecommerce-fulfilment/fulfilment-services.jpeg',
     label: 'Fulfillment Services',
     title: 'Warehousing and Fulfillment',
     description: "Store your inventory across 250,000 sq. ft. of warehousing space and fulfill your orders faster with a cloud-based Warehouse Management System (WMS) that optimizes your pick, pack, and ship processes. With comprehensive 3PL services, from ecommerce fulfillment to B2B retail fulfillment, Amazon FBA and FBM, subscription boxes, and crowdfunding fulfillment, you'll stay in control of your inventory and streamline your operations from end-to-end, so you can maximize efficiency and scale your growth.",
@@ -14,6 +15,7 @@ const tabs = [
   },
   { 
     id: 'delivery', 
+    image:"/ecommerce-fulfilment/delivery-services.jpeg",
     label: 'Delivery Services',
     title: 'Precision Last-Mile Delivery',
     description: "Same-Day and Next-Day Delivery Enhance your customer’s experience with sustainable same-day and next-day delivery across major cities in USA. With a fleet of over 500 vehicles at your service, including a growing fleet of electric vehicles, delight your customers with a prime last-mile delivery experience that wins their loyalty and takes your brand to the next level.Offer an unparalleled customer experience with daily expedited delivery across major American cities.",
@@ -21,13 +23,15 @@ const tabs = [
   },
   { 
     id: 'freight', 
+    image:"/ecommerce-fulfilment/management-services.jpeg",
     label: 'Management Services',
-    title: 'Reliable Freight Solutions',
-    description: "Navigate complex global supply chains with ease. Our freight solutions cover air, sea, and land, providing you with the most cost-effective and reliable routes for bulk inventory movement. We handle customs and documentation so you don't have to.",
+    title: 'Reliable Management Services',
+    description: "Elevate your operations with expert 3PL management services across every major logistics hub in the United States. With a network of over 500 strategic distribution centers at your service, including a growing infrastructure of AI-powered smart warehouses, delight your partners with a seamless fulfillment experience that wins their loyalty and takes your brand to the next level.Master your logistics from the ground up. Partner with a management team dedicated to efficiency, transparency, and the future of American commerce.",
     subtext: 'Scale your international operations with our robust freight network.'
   },
   { 
     id: 'shipping', 
+    image:"/ecommerce-fulfilment/shipping-services.png",
     label: 'Shipping Services',
     title: 'Optimized Shipping & Logistics',
     description: "Shipping Services Streamline your operations and take your brand further with competitive shipping rates, advanced tracking technology, and intelligent shipping solutions. From domestic and international courier solutions to freight shipping by air, ocean, rail, and ground, maximize savings and efficiency, no matter what or where you ship.* Valid for fulfillment customers Simplify your shipping and maximize your savings to maintain profitability.",
@@ -39,7 +43,7 @@ const SolutionSection = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-grid-pattern">
       <div className="container mx-auto px-6">
         
         {/* Section Header */}
@@ -85,7 +89,7 @@ const SolutionSection = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-16 justify-items-center items-center"
             >
               {/* Left Content */}
               <div className="order-2 lg:order-1">
@@ -111,18 +115,15 @@ const SolutionSection = () => {
               </div>
 
               {/* Right - Image Placeholder (Warehouse feel) */}
-              <div className="order-1 lg:order-2 h-[400px] lg:h-full relative rounded-3xl overflow-hidden shadow-2xl">
+              <div className="order-1 lg:order-2 w-126 h-96 relative rounded-3xl overflow-hidden shadow-2xl">
                  {/* This would be the warehouse.jpeg placeholder */}
-                 <div className="absolute inset-0 bg-linear-to-br from-primary/20 to-secondary/20 z-10" />
-                 <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                    <svg className="w-40 h-40 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                 </div>
-                 {/* Floating label */}
-                 <div className="absolute top-8 right-8 bg-secondary text-primary font-black px-4 py-2 rounded-lg text-xs tracking-widest uppercase z-20 shadow-xl">
-                    Managed by 52Logistics
-                 </div>
+                 <Image
+                 src={activeTab?.image || ""}
+                 alt={activeTab.title}
+                 fill
+                 className="object-cover"
+                 />
+
               </div>
             </motion.div>
           </AnimatePresence>
