@@ -3,13 +3,13 @@
 import React from 'react';
 import Navbar from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
-import Hero from '@/components/ecommerce-fulfilment/Hero';
-import InfoSection from '@/components/ecommerce-fulfilment/InfoSection';
-import BrandSection from '@/components/ecommerce-fulfilment/BrandSection';
-import ProcessSection from '@/components/ecommerce-fulfilment/ProcessSection';
-import SolutionSection from '@/components/ecommerce-fulfilment/SolutionSection';
+import Hero from '@/components/services/ecommerce-fulfilment/Hero';
+import InfoSection from '@/components/services/ecommerce-fulfilment/InfoSection';
+import BrandSection from '@/components/services/ecommerce-fulfilment/BrandSection';
+import ProcessSection from '@/components/services/ecommerce-fulfilment/ProcessSection';
+import SolutionSection from '@/components/services/ecommerce-fulfilment/SolutionSection';
 
-import OptimizeSection from '@/components/ecommerce-fulfilment/OptimizeSection';
+import OptimizeSection from '@/components/services/ecommerce-fulfilment/OptimizeSection';
 
 export default function EcommerceFulfillmentPage() {
   return (

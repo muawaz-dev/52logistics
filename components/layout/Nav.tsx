@@ -22,12 +22,9 @@ export default function Navbar() {
   }, []);
 
   const services = [
-    { name: 'Web Development', href: '/services/web-development' },
-    { name: 'Video Editing', href: '/services/video-editing' },
-    { name: 'Graphic Designing', href: '/services/graphic-designing' },
-    { name: 'Social Media Marketing', href: '/services/social-media-marketing' },
-    { name: 'Ad Campaigns', href: '/services/ad-campaigns' },
-    { name: 'Productivity Tools', href: '/services/productivity-tools' },
+    { name: 'Ecommerce Fulfilment', href: '/ecommerce-fulfilment' },
+    { name: 'Retail Fulfilment', href: '/retail-fulfilment' },
+    { name: 'Amazon FBA And FBM', href: '/amazon-fba-fbm' },
   ];
 
 
@@ -128,7 +125,7 @@ export default function Navbar() {
                             key={service.href}
                             href={service.href}
                             onClick={() => setIsServicesOpen(false)}
-                            className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors"
+                            className="block px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-secondary transition-colors"
                           >
                             {service.name}
                           </Link>
