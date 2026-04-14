@@ -1,78 +1,216 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { useAnimation } from '@/context/AnimationContext';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  const { shouldAnimate, registerVisit } = useAnimation('global-footer');
+
+  useEffect(() => {
+    registerVisit();
+  }, [registerVisit]);
+
+  const footerLinks = {
+    company: [
+      { name: 'Home', href: '/' },
+      { name: 'About Us', href: '/about' },
+      { name: 'Services', href: '/ecommerce-fulfilment' },
+      { name: 'Contact', href: '/contact' },
+    ],
+    services: [
+      { name: 'Ecommerce Fulfilment', href: '/ecommerce-fulfilment' },
+      { name: 'Retail Fulfilment', href: '/retail-fulfilment' },
+      { name: 'Amazon FBA And FBM', href: '/amazon-fba-fbm' },
+    ],
+    contact: [
+      {
+        icon: <MapPin className="w-5 h-5 flex-shrink-0" />,
+        text: '123 Feiscantos Road, Bemen, TX 20600',
+        href: 'https://maps.google.com'
+      },
+      {
+        icon: <Phone className="w-5 h-5 flex-shrink-0" />,
+        text: '(+800) 537-3350',
+        href: 'tel:+8005373350'
+      },
+      {
+        icon: <Mail className="w-5 h-5 flex-shrink-0" />,
+        text: 'hello@52logistics.com',
+        href: 'mailto:hello@52logistics.com'
+      },
+    ]
+  };
+
+  const socialLinks = [
+    {
+      name: 'Facebook',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+        </svg>
+      ),
+      href: '#'
+    },
+    {
+      name: 'Twitter',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+          <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+        </svg>
+      ),
+      href: '#'
+    },
+    {
+      name: 'Linkedin',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      ),
+      href: '#'
+    },
+    {
+      name: 'Instagram',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      ),
+      href: '#'
+    },
+  ];
+
   return (
-    <footer className="w-full bg-primary pt-12 pb-16 flex flex-col items-center justify-center text-center mt-auto">
-      
-      {/* Footer Headline */}
-      <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 tracking-wide">
-        52Logistics - Your Trusted Partner
-      </h2>
-      
-      {/* Navigation Links */}
-      <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-[14px] text-gray-300 font-medium mb-10 px-4">
-        <a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer">Contact Us</a>
-        <span className="text-gray-500 font-normal">|</span>
-        <a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer">Services</a>
-        <span className="text-gray-500 font-normal">|</span>
-        <a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer">Case Studies</a>
-        <span className="text-gray-500 font-normal">|</span>
-        <a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer">About Us</a>
-        <span className="text-gray-500 font-normal">|</span>
-        <a href="#" className="hover:text-white transition-colors duration-200 cursor-pointer">Contact Form</a>
-      </div>
+    <footer className="relative bg-primary text-white pt-20 pb-10 overflow-hidden bg-grid-pattern-light">
+      {/* Decorative Orbs */}
+      <div className="glow-orb-orange top-0 right-0 w-96 h-96 opacity-10 translate-x-1/2 -translate-y-1/2" />
+      <div className="glow-orb-navy bottom-0 left-0 w-[500px] h-[500px] opacity-10 -translate-x-1/2 translate-y-1/2" />
 
-      {/* Logo Wrapper */}
-      <div className="mb-6 flex justify-center items-center h-14 relative group cursor-pointer">
-        {/* We use logo.png, assuming it's correctly formatted for dark bgs. */}
-        {/* If it fails to load, the alt text shows neatly. */}
-        <img 
-          src="/home/logo.png" 
-          alt="52Logistics Logo" 
-          className="h-full object-contain filter drop-shadow-md brightness-0 invert" 
-          onError={(e) => {
-            // Remove the invert property if the logo is already white or looks bad inverted
-            e.currentTarget.style.filter = 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))';
-          }}
-        />
-      </div>
+      <motion.div 
+        initial={shouldAnimate ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="container mx-auto max-w-7xl px-6 md:px-12 relative z-10"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
 
-      {/* Social Icons */}
-      <div className="flex items-center gap-3 mt-4">
-        
-        {/* Facebook */}
-        <a href="#" className="w-7 h-7 rounded-full bg-white text-primary flex items-center justify-center hover:bg-gray-200 transition-colors shadow-sm">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-            <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
-          </svg>
-        </a>
+          {/* Column 1: Brand Info */}
+          <div className="space-y-6">
+            <Link href="/" className="inline-block group">
+              <div className="relative bg-gray-200 rounded-4xl w-[220px] h-[60px] transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/home/logo1.png"
+                  alt="52Logistics Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </Link>
+            <p className="text-gray-400 text-lg leading-relaxed max-w-xs">
+              Expertly handling your logistics, so you can focus on growing your business. Premium 3PL solutions for modern brands.
+            </p>
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  whileHover={{ y: -4, scale: 1.1 }}
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-secondary hover:border-secondary/50 transition-all duration-300"
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+          </div>
 
-        {/* Twitter */}
-        <a href="#" className="w-7 h-7 rounded-full bg-white text-primary flex items-center justify-center hover:bg-gray-200 transition-colors shadow-sm">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-[14px] h-[14px]">
-            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-          </svg>
-        </a>
+          {/* Column 2: Quick Links */}
+          <div>
+            <h4 className="text-xl font-bold mb-8 flex items-center gap-2">
+              Quick <span className="text-secondary underline decoration-2 underline-offset-8">Links</span>
+            </h4>
+            <ul className="space-y-4">
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-white flex items-center group transition-colors duration-300"
+                  >
+                    <ArrowRight className="w-4 h-4 mr-2 text-secondary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Instagram */}
-        <a href="#" className="w-7 h-7 rounded-full bg-white text-primary flex items-center justify-center hover:bg-gray-200 transition-colors shadow-sm">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[14px] h-[14px]">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
+          {/* Column 3: Services */}
+          <div>
+            <h4 className="text-xl font-bold mb-8 flex items-center gap-2">
+              Our <span className="text-secondary underline decoration-2 underline-offset-8">Services</span>
+            </h4>
+            <ul className="space-y-4">
+              {footerLinks.services.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-white flex items-center group transition-colors duration-300"
+                  >
+                    <ArrowRight className="w-4 h-4 mr-2 text-secondary opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* YouTube */}
-        <a href="#" className="w-7 h-7 rounded-full bg-white text-primary flex items-center justify-center hover:bg-gray-200 transition-colors shadow-sm">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-            <path d="M21.582 6.186a2.6 2.6 0 00-1.838-1.85C18.117 3.9 12 3.9 12 3.9s-6.117 0-7.744.436a2.6 2.6 0 00-1.838 1.85C2 7.828 2 12 2 12s0 4.172.418 5.814a2.6 2.6 0 001.838 1.85C5.883 20.1 12 20.1 12 20.1s6.117 0 7.744-.436a2.6 2.6 0 001.838-1.85C22 16.172 22 12 22 12s0-4.172-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-          </svg>
-        </a>
-        
-      </div>
+          {/* Column 4: Contact */}
+          <div>
+            <h4 className="text-xl font-bold mb-8 flex items-center gap-2">
+              Contact <span className="text-secondary underline decoration-2 underline-offset-8">Us</span>
+            </h4>
+            <ul className="space-y-6">
+              {footerLinks.contact.map((item, index) => (
+                <li key={index}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 text-gray-400 hover:text-white transition-colors duration-300 group"
+                  >
+                    <div className="mt-1 w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-300 flex-shrink-0">
+                      {item.icon}
+                    </div>
+                    <span className="text-sm leading-relaxed pt-1">{item.text}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-gray-500 text-sm">
+            © {currentYear} 52Logistics. All rights reserved. Precision in every move.
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm">
+            <Link href="#" className="text-gray-500 hover:text-white transition-colors duration-300">Privacy Policy</Link>
+            <Link href="#" className="text-gray-500 hover:text-white transition-colors duration-300">Terms of Service</Link>
+            <Link href="#" className="text-gray-500 hover:text-white transition-colors duration-300">Cookie Policy</Link>
+          </div>
+        </div>
+      </motion.div>
     </footer>
   );
 };

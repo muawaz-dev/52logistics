@@ -7,7 +7,7 @@ import Link from 'next/link';
 const InfoSection = () => {
   return (
     <section className="py-24 bg-grid-pattern overflow-hidden">
-      <div className="container mx-auto px-6">
+      <div className="container max-w-6xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16">
 
           {/* Left - Image Placeholder */}

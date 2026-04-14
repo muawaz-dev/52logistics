@@ -2,44 +2,48 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAnimation } from '@/context/AnimationContext';
 import Image from 'next/image';
 
 const valueAddedServices = [
   {
     title: "Pallet Shipment Bundling",
     description: "Our system identifies retailer requests, ensuring compliance to reduce penalties.",
-    image: "/ecommerce-fulfilment/services.jpeg" // Reusing existing image as requested
+    image: "/retail-fulfilment/value-added/pallet-shipment-bundling.webp" // Reusing existing image as requested
   },
   {
     title: "Compliant Order Processing",
     description: "We meet retailer-specific kitting, packaging, and labeling requirements to ensure protocol compliance.",
-    image: "/retail-fulfilment/info-image.jpeg" // Reusing existing image as requested
+    image: "/retail-fulfilment/value-added/compliant-order-processing.webp" // Reusing existing image as requested
   }
 ];
 
-const BrandSection = () => {
+const ValueAddedSection = () => {
+  const { shouldAnimate, registerVisit } = useAnimation('retail-value-added');
+
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 bg-grid-pattern relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldAnimate ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
+            onViewportEnter={() => registerVisit()}
             viewport={{ once: true }}
-            className="text-primary text-4xl md:text-5xl font-black leading-tight mb-6 tracking-wide uppercase"
+            className="text-primary text-4xl md:text-5xl font-black leading-tight mb-6 tracking-wide"
           >
-            Value Added Services
+            Value Added <span className="ml-2 text-secondary">Services</span>
           </motion.h2>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-8 items-center justify-center">
           {valueAddedServices.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, x: index === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+             <motion.div
+               key={service.title}
+               initial={shouldAnimate ? { opacity: 0, x: index === 0 ? -50 : 50 } : { opacity: 1, x: 0 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.8, delay: shouldAnimate ? index * 0.2 : 0 }}
               className="relative flex flex-col items-center lg:items-center lg:flex-row w-full max-w-2xl group"
             >
               {/* Image Container */}
@@ -69,4 +73,4 @@ const BrandSection = () => {
   );
 };
 
-export default BrandSection;
+export default ValueAddedSection;

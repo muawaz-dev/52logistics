@@ -2,9 +2,16 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAnimation } from '@/context/AnimationContext';
 import Link from 'next/link';
 
 const Hero = () => {
+  const { shouldAnimate, registerVisit } = useAnimation('ecommerce-hero');
+
+  React.useEffect(() => {
+    registerVisit();
+  }, [registerVisit]);
+
   return (
     <section className="relative w-full min-h-[80vh] md:min-h-screen bg-primary flex items-center overflow-hidden pt-20">
       {/* Background Orbs */}
@@ -13,16 +20,16 @@ const Hero = () => {
         <div className="absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[150px]" />
       </div>
 
-      <div className="container mx-auto px-12 pt-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="px-6 w-full md:px-12 pt-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
           {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={shouldAnimate ? { opacity: 0, x: -50 } : { opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-6xl md:text-8xl font-bold -skew-x-6 leading-[0.9] text-white mb-6 tracking-tighter">
+            <h1 className="text-5xl md:text-7xl font-bold -skew-x-6 leading-[0.9] text-white mb-6 tracking-tighter">
               Tech-Driven <br />
               <span className="text-secondary">Ecommerce</span> <br />
               Fulfillment Services
@@ -40,9 +47,9 @@ const Hero = () => {
 
           {/* Right Content - Phone Mockups */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={shouldAnimate ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 1, delay: shouldAnimate ? 0.2 : 0 }}
             className="hidden lg:flex justify-center relative h-[600px]"
           >
             {/* Phone 1 */}

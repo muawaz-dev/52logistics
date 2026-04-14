@@ -4,7 +4,7 @@ import React from 'react';
 
 const FeaturesBanner = () => {
   return (
-    <section className="relative bg-grid-pattern w-full max-w-7xl mx-auto px-8 pb-20">
+    <section className="relative bg-grid-pattern w-full max-w-6xl mx-auto px-8 pb-20">
       <div className="bg-primary rounded-3xl md:rounded-[2.5rem] py-10 px-8 md:px-12 flex flex-col lg:flex-row items-center justify-between shadow-2xl relative">
       
 

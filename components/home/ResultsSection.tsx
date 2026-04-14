@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAnimation } from '@/context/AnimationContext';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -17,6 +18,8 @@ const itemVariants = {
 };
 
 const ResultsSection = () => {
+  const { shouldAnimate, registerVisit } = useAnimation('home-results');
+
   return (
     <section className="w-full bg-white bg-grid-pattern py-20 px-6 relative">
       {/* Background glow */}
@@ -25,11 +28,12 @@ const ResultsSection = () => {
       </div>
       
       <motion.div 
-        initial="hidden"
+        initial={shouldAnimate ? "hidden" : "visible"}
         whileInView="visible"
+        onViewportEnter={() => registerVisit()}
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
-        className="max-w-5xl mx-auto flex flex-col items-center relative z-10"
+        className="max-w-6xl mx-auto flex flex-col items-center relative z-10"
       >
         
         {/* Section Title */}

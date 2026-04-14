@@ -2,16 +2,20 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAnimation } from '@/context/AnimationContext';
 
 const ConsultationForm = () => {
+  const { shouldAnimate, registerVisit } = useAnimation('home-consultation-form');
+
   return (
     <section className="w-full bg-white bg-grid-pattern relative py-20 px-6">
       <motion.div 
-        initial={{ opacity: 0, y: 40 }}
+        initial={shouldAnimate ? { opacity: 0, y: 40 } : { opacity: 1, y: 0 }}
         whileInView={{ opacity: 1, y: 0 }}
+        onViewportEnter={() => registerVisit()}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="max-w-4xl mx-auto relative z-10"
+        className="max-w-6xl mx-auto relative z-10"
       >
         
         {/* Main Form Container */}
@@ -20,15 +24,15 @@ const ConsultationForm = () => {
           {/* Subtle background element (optional) */}
           <div className="absolute top-0 right-0 w-64 h-full bg-secondary opacity-[0.02] rounded-full blur-3xl transform translate-x-1/2"></div>
           
-          <div className="flex flex-col md:flex-row gap-8 md:gap-12 relative z-10 mb-8">
+          <div className="flex flex-col items-center justify-center md:flex-row gap-8 md:gap-12 relative z-10 mb-8">
             
             {/* Left Side: Inputs */}
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 items-center flex flex-col">
               <h3 className="text-white text-[28px] md:text-3xl font-bold mb-6 tracking-tight">
                 Request a Consultation
               </h3>
               
-              <div className="flex flex-col gap-3.5">
+              <div className="flex flex-col w-full max-w-xl gap-3.5">
                 <input 
                   type="text" 
                   placeholder="Name" 
@@ -62,71 +66,6 @@ const ConsultationForm = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Right Side: Map & Info */}
-            <div className="w-full md:w-[42%] flex flex-col justify-end pt-2 md:pt-0">
-              
-              {/* Map UI Element */}
-              <div className="w-full h-[180px] md:h-44 bg-[#F2F4F1] rounded-2xl overflow-hidden relative mb-6 border-4 border-white shadow-sm">
-                {/* CSS Map Roads */}
-                <div className="absolute w-[200%] h-8 bg-white top-10 -left-10 rotate-6 shadow-[0_0_1px_rgba(0,0,0,0.1)]"></div>
-                <div className="absolute w-[200%] h-12 bg-white top-24 -left-10 -rotate-3 shadow-[0_0_1px_rgba(0,0,0,0.1)]"></div>
-                <div className="absolute w-12 h-[200%] bg-white left-[40%] -top-10 shadow-[0_0_1px_rgba(0,0,0,0.1)]"></div>
-                
-                {/* CSS Map Route Header/Line */}
-                <div className="absolute w-2 h-[200%] bg-[#F9D77E] left-[42%] -top-10 shadow-[0_0_1px_rgba(0,0,0,0.1)] z-10"></div>
-                <div className="absolute w-[200%] h-2 bg-[#F9D77E] top-[108px] -left-10 -rotate-3 shadow-[0_0_1px_rgba(0,0,0,0.1)] z-10"></div>
-                
-                {/* Map Park/Water Blobs */}
-                <div className="absolute w-24 h-24 bg-[#DCECD8] rounded-full top-4 -right-6 blur-[2px]"></div>
-                <div className="absolute w-16 h-12 bg-[#D1E0E8] rounded-full top-20 left-4 blur-[1px]"></div>
-                
-                {/* Small text simulations */}
-                <div className="absolute left-[8%] top-[60%] text-[8px] text-[#5586A4] font-bold -rotate-3 tracking-wide bg-white/50 px-1 rounded">Riverpark Resouece</div>
-                
-                {/* Map Pin */}
-                <div className="absolute top-1/2 left-[43%] -translate-x-1/2 -translate-y-full z-20 flex flex-col items-center drop-shadow-md">
-                   <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-7 h-9 text-[#D83A3A]">
-                      <path fillRule="evenodd" clipRule="evenodd" d="M12 0C5.37258 0 0 5.37258 0 12C0 21 12 32 12 32C12 32 24 21 24 12C24 5.37258 18.6274 0 12 0ZM12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17Z" fill="currentColor"/>
-                   </svg>
-                   <div className="w-3 h-1 bg-black/20 rounded-[100%] blur-[1px] mt-0.5"></div>
-                   
-                   {/* Popover Box connected to cursor */}
-                   <div className="absolute top-1 left-7 bg-white/90 px-2 py-1 rounded text-[8px] font-bold text-gray-800 shadow-sm border border-gray-100 min-w-[70px]">
-                      52Logistics<br/><span className="text-[6px] text-gray-500 font-normal">Headquarters</span>
-                   </div>
-                </div>
-              </div>
-
-              {/* Contact Info */}
-              <div className="flex flex-col gap-4 pl-2 lg:pl-4">
-                
-                <div className="flex items-start gap-4">
-                  <div className="mt-0.5 shrink-0 text-[#E67E22]">
-                    <svg width="18" height="20" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9 1C4.58172 1 1 4.58172 1 9C1 15.6667 9 21 9 21C9 21 17 15.6667 17 9C17 4.58172 13.4183 1 9 1Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <circle cx="9" cy="9" r="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <div className="flex flex-col leading-snug">
-                    <span className="text-gray-100 text-[15px] font-medium tracking-wide">123 Feiscantos Road</span>
-                    <span className="text-gray-100 text-[15px] font-medium tracking-wide">Bemen, TX 20600</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="shrink-0 text-[#E67E22] transform -scale-x-100">
-                     {/* Phone Receiver SVG */}
-                    <svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M21 15.92V18.92C21 19.47 20.53 19.95 19.97 19.92C16.89 19.74 13.97 18.8 11.4 17.26C9.01 15.91 6.96 13.86 5.61 11.47C4.06 8.89 3.12 5.96 2.94 2.87C2.91 2.31 3.39 1.84 3.94 1.84H6.94C7.43 1.84 7.84 2.2 7.93 2.69C8.05 3.36 8.24 4.01 8.49 4.63C8.6 4.88 8.54 5.17 8.35 5.36L6.44 7.27C7.86 10.08 10.15 12.37 12.96 13.79L14.87 11.88C15.06 11.69 15.35 11.63 15.6 11.74C16.22 11.99 16.87 12.18 17.54 12.3C18.04 12.39 18.41 12.81 18.41 13.31L18.41 15.92Z" fill="currentColor"/>
-                    </svg>
-                  </div>
-                  <span className="text-gray-100 text-[15px] font-bold tracking-wide">(+800) 537-3350</span>
-                </div>
-
-              </div>
-
             </div>
 
           </div>

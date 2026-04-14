@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAnimation } from '@/context/AnimationContext';
 
 const services = [
   {
@@ -175,6 +176,8 @@ const itemVariants = {
 };
 
 const Services = () => {
+  const { shouldAnimate, registerVisit } = useAnimation('home-services');
+
   return (
     <section className="relative w-full py-20 bg-white bg-grid-pattern">
       {/* Background swoosh wave replaced with grid for a more premium dense feel but keeping orange subtle glow orb */}
@@ -183,11 +186,12 @@ const Services = () => {
         <div className="glow-orb-orange w-[500px] h-[500px] -right-40 bottom-0"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 xl:px-8">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 xl:px-8">
         <motion.div 
           variants={containerVariants}
-          initial="hidden"
+          initial={shouldAnimate ? "hidden" : "visible"}
           whileInView="visible"
+          onViewportEnter={() => registerVisit()}
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-8"
         >

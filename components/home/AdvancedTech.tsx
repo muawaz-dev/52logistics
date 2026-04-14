@@ -2,17 +2,21 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAnimation } from '@/context/AnimationContext';
 import { Store, Smartphone, FileSignature, Network, Package, MapPin } from 'lucide-react';
-
+import Image from 'next/image';
 const AdvancedTech = () => {
+  const { shouldAnimate, registerVisit } = useAnimation('home-advanced-tech');
+
   return (
     <section className="relative w-full py-20 bg-grid-pattern overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col items-center relative z-10">
+      <div className="max-w-6xl mx-auto px-6 flex flex-col items-center relative z-10">
 
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
+          initial={shouldAnimate ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          onViewportEnter={() => registerVisit()}
           viewport={{ once: true }}
           className="text-primary text-4xl md:text-5xl font-black leading-tight tracking-tight mb-16 text-center"
         >
@@ -25,7 +29,7 @@ const AdvancedTech = () => {
 
           {/* Left Side: Integrations Grid & Text */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={shouldAnimate ? { opacity: 0, x: -30 } : { opacity: 1, x: 0 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
@@ -34,70 +38,35 @@ const AdvancedTech = () => {
 
             {/* Logos Grid (4x3) */}
             <div className="grid grid-cols-4 gap-4 mb-10 w-full max-w-[500px]">
-
-              {/* Row 1 */}
-              <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center p-3 hover:shadow-md transition-shadow">
-                <Store className="w-10 h-10 text-[#2B3A5A]" strokeWidth={1.5} />
-              </div>
               <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center p-2 hover:shadow-md transition-shadow">
-                <span className="text-[17px] font-bold tracking-tighter text-black leading-none mt-2" style={{ fontFamily: "Arial, sans-serif" }}>amazon</span>
-                <svg width="45" height="15" viewBox="0 0 100 30" fill="none" className="relative -top-1">
-                  <path d="M5 10 Q 50 25 95 5 L 90 15 Q 50 35 5 15 Z" fill="#FF9900" />
-                  <path d="M95 5 L 85 0 L 90 10 Z" fill="#FF9900" />
-                </svg>
+
+                 <Image src="/home/advanced-tech/amazon.webp" alt="Amazon" width={80} height={80} />
               </div>
               <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center p-3 hover:shadow-md transition-shadow">
-                <svg width="36" height="40" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[85%] h-[85%]">
-                  <path d="M26.5 9.5C26.5 9.5 24.2 3.8 20.5 1.5C18 -0.1 14.8 -0.1 11.5 1V9.5C11.5 9.5 15 8.2 18.5 8.2C22 8.2 26.5 9.5 26.5 9.5Z" fill="#95BF47" />
-                  <path d="M26.5 9.5L25 32C25 32 19 35 15 35C11 35 7 32 7 32L3 13C3 13 8 11.5 11.5 9.5V1C11.5 1 5 1.5 1 12L5 33.5C5 33.5 12 36 15.5 36C19 36 27 33.5 27 33.5L30 11L26.5 9.5Z" fill="#5E8E3E" />
-                  <path d="M16 23C16 23 18 24.5 19.5 22.5C21 20.5 20.5 18 18 17C15.5 16 15.5 15 16 14C16.5 13 18 13.5 19 14.5L21 12C21 12 19.5 10 16 10C12.5 10 11.5 13 12.5 16C13.5 19 16 19.5 16.5 20C17 20.5 17 21 16 21.5C15 22 13.5 21 12.5 20L10.5 22C10.5 22 12.5 25 16 23Z" fill="white" />
-                </svg>
+                <Image src="/home/advanced-tech/ebay.webp" alt="Ebay" width={80} height={80} />
               </div>
               <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center p-2 hover:shadow-md transition-shadow">
                 <div className="relative mb-0.5">
-                  <svg width="40" height="26" viewBox="0 0 50 35" fill="none">
-                    <path d="M25 0 C11 0 0 8 0 18 C0 23 3 28 8 31 L6 35 L12 32 C16 34 20 35 25 35 C39 35 50 27 50 18 C50 8 39 0 25 0 Z" fill="#96588A" />
-                  </svg>
-                  <span className="absolute inset-0 flex items-center justify-center text-white text-[12px] font-bold -translate-y-[1px]" style={{ fontFamily: "Arial, sans-serif" }}>Woo</span>
+                  <Image src="/home/advanced-tech/shopify.webp" alt="Shopify" width={80} height={80} />
                 </div>
               </div>
 
               {/* Row 2 */}
               <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center p-2 hover:shadow-md transition-shadow">
-                <span className="text-[20px] font-bold tracking-tight lowercase flex" style={{ fontFamily: "Helvetica, Arial, sans-serif" }}>
-                  <span className="text-[#E53238]">e</span>
-                  <span className="text-[#0064D2] -ml-[1px]">b</span>
-                  <span className="text-[#F5AF02] -ml-[1px]">a</span>
-                  <span className="text-[#86B817] -ml-[1px]">y</span>
-                </span>
+                <Image src="/home/advanced-tech/walmart.webp"
+                 alt="Walmart" width={100} height={100} />
               </div>
               <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center p-3 hover:shadow-md transition-shadow relative">
                 {/* Magento Logo approximation */}
                 <div className="w-10 h-10 flex items-center justify-center text-[#F26322]">
-                  <svg width="45" height="45" viewBox="0 0 100 100" fill="currentColor">
-                    <path d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" fill="none" stroke="currentColor" strokeWidth="12" />
-                    <path d="M50 35 L50 65" stroke="currentColor" strokeWidth="8" />
-                    <path d="M30 46 L30 75" stroke="currentColor" strokeWidth="8" />
-                    <path d="M70 46 L70 75" stroke="currentColor" strokeWidth="8" />
-                    <path d="M30 46 L50 35 L70 46" fill="none" stroke="currentColor" strokeWidth="8" />
-                  </svg>
+                 <Image src="/home/advanced-tech/magento.jpg"
+                 alt="Magento" width={200} height={200} />
                 </div>
               </div>
               <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center p-3 hover:shadow-md transition-shadow">
                 {/* Bigcommerce Logo approximation */}
-                <svg viewBox="0 0 100 100" fill="none" className="w-[85%] h-[85%]">
-                  <path d="M10 80 L90 80 L10 20 Z" fill="#1C2024" />
-                  <text x="35" y="65" fill="white" fontSize="40" fontWeight="bold">B</text>
-                </svg>
-              </div>
-              <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center p-2 hover:shadow-md transition-shadow">
-                <span className="text-[14px] font-bold tracking-tight text-[#0071CE] flex items-center gap-0.5">
-                  Walmart
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="#FFC220">
-                    <path d="M11 2 V6 H13 V2 Z M11 18 V22 H13 V18 Z M5 5 L8 8 L9.5 6.5 L6.5 3.5 Z M19 19 L16 16 L14.5 17.5 L17.5 20.5 Z M2 11 H6 V13 H2 Z M18 11 H22 V13 H18 Z M5 19 L8 16 L9.5 17.5 L6.5 20.5 Z M19 5 L16 8 L14.5 6.5 L17.5 3.5 Z" />
-                    <circle cx="12" cy="12" r="3" fill="#FFC220" />
-                  </svg>
-                </span>
+                <Image src="/home/advanced-tech/bigcommerce.webp"
+                 alt="Bigcommerce" width={150} height={150} />
               </div>
 
               {/* Row 3 */}
@@ -117,14 +86,6 @@ const AdvancedTech = () => {
                   <span className="absolute text-[#FFB500] font-serif italic font-bold text-[14px] top-1/2 -translate-y-1/2">ups</span>
                 </div>
               </div>
-              <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center p-2 hover:shadow-md transition-shadow">
-                <span className="text-[#FF0000] font-black text-[18px] tracking-tighter leading-none">XPO</span>
-                <span className="text-black font-bold text-[8px] tracking-widest mt-[1px]">Logistics</span>
-              </div>
-              <div className="aspect-square bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center p-2 hover:shadow-md transition-shadow">
-                <span className="text-[#0055A5] font-black text-[13px] italic tracking-tight leading-none text-center">TForce</span>
-                <span className="text-[#D31145] font-black text-[10px] uppercase mt-[1px]">Freight</span>
-              </div>
 
             </div>
 
@@ -135,11 +96,11 @@ const AdvancedTech = () => {
 
           {/* Right Side: iMac Mockup & Features Box */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={shouldAnimate ? { opacity: 0, x: 30 } : { opacity: 1, x: 0 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             viewport={{ once: true }}
-            className="w-full lg:w-[55%] flex flex-col"
+            className="w-full lg:w-[55%] hidden sm:flex flex-col"
           >
             {/* iMac Mockup */}
             <div className="relative w-full shadow-2xl rounded-t-2xl mb-8">
@@ -269,7 +230,7 @@ const AdvancedTech = () => {
 
             {/* Bottom Floating Feature Box */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldAnimate ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}

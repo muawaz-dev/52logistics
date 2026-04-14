@@ -2,16 +2,20 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useAnimation } from '@/context/AnimationContext';
 
 const ComparisonSection = () => {
+  const { shouldAnimate, registerVisit } = useAnimation('home-comparison');
+
   return (
     <section className="w-full bg-white bg-grid-pattern py-24 px-6 font-sans">
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
+        initial={shouldAnimate ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
         whileInView={{ opacity: 1, y: 0 }}
+        onViewportEnter={() => registerVisit()}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-5xl mx-auto flex flex-col items-center"
+        className="max-w-6xl mx-auto flex flex-col items-center"
       >
         
         {/* Top Titles */}

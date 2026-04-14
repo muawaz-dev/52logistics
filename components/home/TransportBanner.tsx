@@ -3,19 +3,23 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useAnimation } from '@/context/AnimationContext';
 
 const TransportBanner = () => {
+  const { shouldAnimate, registerVisit } = useAnimation('home-transport-banner');
+
   return (
     <section className="relative w-full p-12 bg-grid-pattern overflow-hidden">
       {/* The transport image */}
-      <div className='flex justify-center'>
+      <div className='flex flex-wrap gap-8 lg:gap-4 justify-center'>
 
         {/* Content overlay */}
         <div className="flex items-center">
-          <div className="max-w-7xl mx-auto px-8 w-full">
+          <div className="max-w-6xl mx-auto px-8 w-full">
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={shouldAnimate ? { opacity: 0, x: -40 } : { opacity: 1, x: 0 }}
               whileInView={{ opacity: 1, x: 0 }}
+              onViewportEnter={() => registerVisit()}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.8 }}
               className="max-w-xl"

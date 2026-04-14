@@ -1,8 +1,4 @@
 'use client';
-
-import React from 'react';
-import Navbar from '@/components/layout/Nav';
-import Footer from '@/components/layout/Footer';
 import Hero from '@/components/services/ecommerce-fulfilment/Hero';
 import InfoSection from '@/components/services/ecommerce-fulfilment/InfoSection';
 import BrandSection from '@/components/services/ecommerce-fulfilment/BrandSection';
