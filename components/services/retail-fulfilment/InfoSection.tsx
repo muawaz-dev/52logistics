@@ -18,11 +18,11 @@ const InfoSection = () => {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-1/2 relative"
           >
-            <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl bg-gray-100 w-96 h-110 flex items-center justify-center border-8 border-white">
+            <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl bg-gray-100 w-84 h-96 sm:w-108 sm:h-110 flex items-center justify-center border-8 border-white">
               {/* Simulated Person/Activity Image */}
               <div className="w-full h-full bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                 <Image
-                  src="/retail-fulfilment/info-image.jpeg"
+                  src="/retail-fulfilment/info-image.webp"
                   alt="Retail Fulfillment"
                   fill
                   className="object-cover object-center"

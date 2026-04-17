@@ -11,6 +11,10 @@ const Hero = () => {
 
   React.useEffect(() => {
     registerVisit();
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [registerVisit]);
 
   return (
@@ -26,8 +30,8 @@ const Hero = () => {
 
           {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, x: shouldAnimate ? -50 : 0 }}
-            animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : (shouldAnimate ? -50 : 0) }}
+            initial={shouldAnimate ? { opacity: 0, x: -50 } : { opacity: 1, x: 0 }}
+            animate={{ opacity: !shouldAnimate || isLoaded ? 1 : 0, x: !shouldAnimate || isLoaded ? 0 : -50 }}
             transition={{ duration: shouldAnimate ? 0.8 : 0.4, ease: "easeOut" }}
           >
             <h1 className="text-5xl md:text-7xl font-bold -skew-x-6 leading-[0.9] text-white mb-6 tracking-tighter">
@@ -49,8 +53,8 @@ const Hero = () => {
 
           {/* Right Content - Hero Image */}
           <motion.div
-            initial={{ opacity: 0, y: shouldAnimate ? 20 : 0 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : (shouldAnimate ? 20 : 0) }}
+            initial={shouldAnimate ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
+            animate={{ opacity: !shouldAnimate || isLoaded ? 1 : 0, y: !shouldAnimate || isLoaded ? 0 : 20 }}
             transition={{ duration: shouldAnimate ? 1 : 0.4, delay: shouldAnimate ? 0.2 : 0 }}
             className="hidden lg:flex justify-center relative"
           >
@@ -62,6 +66,7 @@ const Hero = () => {
                 height={600}
                 className="w-full mb-4 h-auto drop-shadow-2xl rounded-3xl"
                 onLoad={() => setIsLoaded(true)}
+                priority
               />
               {/* Decorative elements */}
               <div className="absolute -top-6 -right-6 w-24 h-24 bg-secondary/20 rounded-full blur-2xl animate-pulse" />

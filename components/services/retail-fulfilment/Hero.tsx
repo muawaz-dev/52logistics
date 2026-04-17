@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useAnimation } from '@/context/AnimationContext';
 import Link from 'next/link';
-
+import Image from 'next/image';
 const Hero = () => {
   const { shouldAnimate, registerVisit } = useAnimation('retail-hero');
   const [loadedImagesCount, setLoadedImagesCount] = React.useState(0);
@@ -13,7 +13,11 @@ const Hero = () => {
 
   React.useEffect(() => {
     registerVisit();
-  }, [registerVisit]);
+    const timer = setTimeout(() => {
+      setLoadedImagesCount(totalImages);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [registerVisit, totalImages]);
 
   return (
     <section className="relative justify-center w-full min-h-[80vh] md:min-h-screen bg-primary flex items-center overflow-hidden pt-20">
@@ -28,8 +32,8 @@ const Hero = () => {
           
           {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, x: shouldAnimate ? -50 : 0 }}
-            animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : (shouldAnimate ? -50 : 0) }}
+            initial={shouldAnimate ? { opacity: 0, x: -50 } : { opacity: 1, x: 0 }}
+            animate={{ opacity: !shouldAnimate || isLoaded ? 1 : 0, x: !shouldAnimate || isLoaded ? 0 : -50 }}
             transition={{ duration: shouldAnimate ? 0.8 : 0.4, ease: "easeOut" }}
           >
             <h1 className="text-5xl md:text-7xl font-bold -skew-x-6 leading-[0.9] text-white mb-6 tracking-tighter">
@@ -50,8 +54,8 @@ const Hero = () => {
 
           {/* Right Content - Retailer Logos */}
           <motion.div
-            initial={{ opacity: 0, y: shouldAnimate ? 20 : 0 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : (shouldAnimate ? 20 : 0) }}
+            initial={shouldAnimate ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            animate={{ opacity: !shouldAnimate || isLoaded ? 1 : 0, y: !shouldAnimate || isLoaded ? 0 : 20 }}
             transition={{ duration: shouldAnimate ? 1 : 0.4, delay: shouldAnimate ? 0.2 : 0 }}
             className="hidden lg:flex justify-center items-center relative h-[500px]"
           >
@@ -71,11 +75,14 @@ const Hero = () => {
                 className={`absolute ${retailer.className} bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-2xl flex items-center justify-center`}
               >
                 <div className="relative w-full h-full flex items-center justify-center transition-all duration-500">
-                  <img
+                  <Image
                     src={retailer.src}
                     alt={retailer.alt}
+                    width={200}
+                    height={200}
                     className="max-w-full max-h-full object-contain filter drop-shadow-xl"
                     onLoad={() => setLoadedImagesCount(prev => prev + 1)}
+                    priority
                   />
                 </div>
               </motion.div>

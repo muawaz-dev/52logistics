@@ -30,18 +30,18 @@ const Footer = () => {
     contact: [
       {
         icon: <MapPin className="w-5 h-5 flex-shrink-0" />,
-        text: '123 Feiscantos Road, Bemen, TX 20600',
+        text: '965 Highams Ct Woodbridge,VA 22191',
         href: 'https://maps.google.com'
       },
       {
         icon: <Phone className="w-5 h-5 flex-shrink-0" />,
-        text: '(+800) 537-3350',
+        text: '+1 (571) 343-9672',
         href: 'tel:+8005373350'
       },
       {
         icon: <Mail className="w-5 h-5 flex-shrink-0" />,
-        text: 'hello@52logistics.com',
-        href: 'mailto:hello@52logistics.com'
+        text: 'support@52logistics.com',
+        href: 'mailto:support@52logistics.com'
       },
     ]
   };

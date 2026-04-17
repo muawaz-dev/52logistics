@@ -3,7 +3,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useAnimation } from '@/context/AnimationContext';
-
+const services = [
+  "Fulfillment",
+  "Same Day And Next Day Delivery",
+  "Freight Services",
+  "EasyPay Support"
+  
+]
 const ConsultationForm = () => {
   const { shouldAnimate, registerVisit } = useAnimation('home-consultation-form');
 
@@ -44,13 +50,35 @@ const ConsultationForm = () => {
                   className="w-full rounded-xl px-5 py-3.5 text-[15px] text-gray-800 bg-white border border-transparent focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22] outline-none transition-all placeholder:text-gray-500 font-medium"
                 />
                 <input 
+                  type="phone" 
+                  placeholder="Phone Number" 
+                  className="w-full rounded-xl px-5 py-3.5 text-[15px] text-gray-800 bg-white border border-transparent focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22] outline-none transition-all placeholder:text-gray-500 font-medium"
+                />
+                <input 
                   type="url" 
                   placeholder="Website URL" 
                   className="w-full rounded-xl px-5 py-3.5 text-[15px] text-gray-800 bg-white border border-transparent focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22] outline-none transition-all placeholder:text-gray-500 font-medium"
                 />
                 <div className="relative">
                   <select 
-                    className="w-full rounded-xl px-5 py-3.5 text-[15px] text-gray-500 bg-white border border-transparent focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22] outline-none transition-all appearance-none font-medium cursor-pointer"
+                    className="w-full rounded-xl px-5 py-3.5 text-[15px] text-gray-800 bg-white border border-transparent focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22] outline-none transition-all appearance-none font-medium cursor-pointer"
+                    defaultValue=""
+                  >
+                    <option className='text-gray-800' value="" disabled>Services</option>
+                    {services.map((service, index) => (
+                      <option key={index} value={service}>{service}</option>
+                    ))}
+                  </select>
+                  {/* Custom Chevron icon */}
+                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-800">
+                    <svg width="12" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div className="relative">
+                  <select 
+                    className="w-full rounded-xl px-5 py-3.5 text-[15px] text-gray-800 bg-white border border-transparent focus:border-[#E67E22] focus:ring-1 focus:ring-[#E67E22] outline-none transition-all appearance-none font-medium cursor-pointer"
                     defaultValue=""
                   >
                     <option value="" disabled>Projected Order Volume</option>
@@ -59,7 +87,7 @@ const ConsultationForm = () => {
                     <option value="2500+">2,500+ orders / mo</option>
                   </select>
                   {/* Custom Chevron icon */}
-                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-800">
                     <svg width="12" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>

@@ -41,7 +41,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-primary font-bold text-xl mb-1">Location</h4>
-                  <p className="text-gray-600 font-medium">123 Feiscantos Road,<br />Bemen, TX 20600</p>
+                  <p className="text-gray-600 font-medium">965 Highams Ct Woodbridge,<br />VA 22191</p>
                 </div>
               </div>
 
@@ -54,7 +54,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-primary font-bold text-xl mb-1">Phone</h4>
-                  <p className="text-gray-600 font-bold text-lg hover:text-secondary transition-colors">(+800) 537-3350</p>
+                  <p className="text-gray-600 font-bold text-lg hover:text-secondary transition-colors">+1 (571) 343-9672</p>
                 </div>
               </div>
 
@@ -68,7 +68,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-primary font-bold text-xl mb-1">Email</h4>
-                  <p className="text-gray-600 font-bold text-lg hover:text-secondary transition-colors">hello@52logistics.com</p>
+                  <p className="text-gray-600 font-bold text-lg hover:text-secondary transition-colors">support@52logistics.com</p>
                 </div>
               </div>
             </div>

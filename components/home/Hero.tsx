@@ -44,7 +44,7 @@ const Hero = () => {
             alt="Logistics Background"
             fill
             priority
-            className="object-cover lg:hidden object-right lg:object-top"
+            className="object-cover lg:hidden object-left lg:object-top"
             onLoad={() => setIsLoaded(true)}
           />
         </motion.div>

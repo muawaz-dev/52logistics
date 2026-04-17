@@ -7,7 +7,7 @@ import Link from 'next/link';
 const tabs = [
   { 
     id: 'fulfilment', 
-    image: '/ecommerce-fulfilment/fulfilment-services.jpeg',
+    image: '/ecommerce-fulfilment/fulfilment-service.png',
     label: 'Fulfillment Services',
     title: 'Warehousing and Fulfillment',
     description: "Store your inventory across 250,000 sq. ft. of warehousing space and fulfill your orders faster with a cloud-based Warehouse Management System (WMS) that optimizes your pick, pack, and ship processes. With comprehensive 3PL services, from ecommerce fulfillment to B2B retail fulfillment, Amazon FBA and FBM, subscription boxes, and crowdfunding fulfillment, you'll stay in control of your inventory and streamline your operations from end-to-end, so you can maximize efficiency and scale your growth.",
@@ -23,7 +23,7 @@ const tabs = [
   },
   { 
     id: 'freight', 
-    image:"/ecommerce-fulfilment/management-services.jpeg",
+    image:"/ecommerce-fulfilment/management-services.png",
     label: 'Management Services',
     title: 'Reliable Management Services',
     description: "Elevate your operations with expert 3PL management services across every major logistics hub in the United States. With a network of over 500 strategic distribution centers at your service, including a growing infrastructure of AI-powered smart warehouses, delight your partners with a seamless fulfillment experience that wins their loyalty and takes your brand to the next level.Master your logistics from the ground up. Partner with a management team dedicated to efficiency, transparency, and the future of American commerce.",
@@ -81,7 +81,7 @@ const SolutionSection = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="bg-gray-50 rounded-[3rem] p-8 md:p-16 overflow-hidden min-h-[500px]">
+        <div className="bg-gray-50 rounded-[3rem] px-8 pb-8 md:p-16 md:px-16 overflow-hidden min-h-[500px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab.id}
