@@ -13,7 +13,7 @@ const features = [
   },
   {
     title: "Amazon Consulting",
-    description: "Unlock the full potential of your store with the expertise of our compliance specialists, who bring in-depth knowledge and hands-on experience to navigate the complexities of Amazon FBA and Amazon FBM in Canada.",
+    description: "Unlock the full potential of your store with the expertise of our compliance specialists, who bring in-depth knowledge and hands-on experience to navigate the complexities of Amazon FBA and Amazon FBM in USA.",
     image: "/amazon-fba-fbm/amazon-consulting.webp"
   },
   {
@@ -33,7 +33,7 @@ const features = [
   },
   {
     title: "Scalable Warehousing",
-    description: "Scale your business with access to 250,000+ sq ft of warehousing space, so you never have to worry about inventory restrictions or put a ceiling on your growth.",
+    description: "Scale your business with access to warehousing space, so you never have to worry about inventory restrictions or put a ceiling on your growth.",
     image: "/amazon-fba-fbm/scalable-warehousing.webp"
   }
 ];

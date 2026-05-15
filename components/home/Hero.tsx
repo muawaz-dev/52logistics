@@ -32,7 +32,7 @@ const Hero = () => {
           className="absolute inset-0 z-0"
         >
           <Image
-            src="/home/hero-3.png"
+            src="/home/hero.png"
             alt="Logistics Background"
             fill
             priority
